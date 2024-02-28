@@ -102,6 +102,47 @@ youth=df[df["AGE"]<=30].PARTY.value_counts()
 youth.head()
 
 
+#to plot numbers of male winners
+winner = df[df['WINNER']==1]
+Male_winner=winner[winner["GENDER"]=="MALE"]
+sns.histplot(data=Male_winner,y="PARTY",palette="ch:s=.25,rot=-.25")
+plt.title("Male Winners from different Party")
+
+
+#to plot male winners from different parties
+sns.histplot(data=Male_winner,y="PARTY",palette="ch:s=.25,rot=-.25")
+plt.title("Male Winners from different Party")
+
+#total votes state statewise
+votes=df.groupby("STATE")["Total_votes"]
+votes.head()
+
+
+caste=df["CATEGORY"].value_counts()
+caste
+
+
+bjp=df[df["PARTY"]=="BJP"].STATE.value_counts().reset_index()
+inc=df[df["PARTY"]=="INC"].STATE.value_counts().reset_index()
+ind=df[df["PARTY"]=="IND"].STATE.value_counts().reset_index()
+bsp=df[df["PARTY"]=="BSP"].STATE.value_counts().reset_index()
+cpi=df[df["PARTY"]=="CPI(M)"].STATE.value_counts().reset_index()
+vba=df[df["PARTY"]=="VBA"].STATE.value_counts().reset_index()
+aitc=df[df["PARTY"]=="AITC"].STATE.value_counts().reset_index()
+sp=df[df["PARTY"]=="SP"].STATE.value_counts().reset_index()
+mnm=df[df["PARTY"]=="MNM"].STATE.value_counts().reset_index()
+ntk=df[df["PARTY"]=="NTK"].STATE.value_counts().reset_index()
+sns.barplot(x=bjp["STATE"],y=bjp["index"])
+plt.xlabel("count")
+plt.ylabel("STATE")
+plt.title('Spread of BJP party in states of India')
+plt.show()
+
+
+
+#to check spread of top indian parties from india
+df['PARTY'].value_counts()[0:10]
+
 
 
 
